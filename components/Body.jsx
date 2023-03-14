@@ -14,6 +14,7 @@ import {
         MenuOptionGroup,
         MenuDivider,
 	Button,
+	ButtonGroup,
 	Center,
 	Heading,
 	Text,
@@ -22,9 +23,14 @@ import {
 	Card,
 	CardBody,
 	CardFooter,
-	Avatar
+	Avatar,
+	Icon
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import { 
+	AiFillHeart,
+	AiOutlineEye
+} from "react-icons/ai";
 import axios from 'axios'
 import Hover from './Hover.jsx'
 
@@ -41,7 +47,7 @@ const Body=()=>{
 	,[])
 	console.log(data)
 	return(
-		isLoading?(<div>{"Loading"}</div>):
+		isLoading?(<Box><Center width='100vw' height='100vh'>{"Loading"}</Center></Box>):
 		(
 		<Box flexDirection={"column"}>
 		   <Flex mr={"auto"} pl={"25px"}>
@@ -52,7 +58,7 @@ const Body=()=>{
 		      </Menu>
 		   </Flex>
 		   <Center mb={{sm:'5%',md:'1%'}} flexDirection={'column'}>
-		      <Heading pt={{sm:'10%',md:'3%'}} pb={{sm:'5%'}}>
+		      <Heading pt={{sm:'7%',md:'3%'}} pb={{sm:'5%'}}>
 		         {"LOREM"}
 		      </Heading>
 		      <Text textAlign={'center'} pr={{sm:'5%',md:'1%'}} pl={{sm:'5%',md:'1%'}}>
@@ -63,13 +69,21 @@ const Body=()=>{
 		   </Center>
 		   <Card>
 		      <CardBody minW={'80%'} ml='auto' mr='auto'>
-		         <AspectRatio margin='auto'  maxW={{sm:'60%',md:'20%'}} 
-				maxH={{sm:'70%',md:'30%'}} ratio={{sm:0.55,md:0.55}}>
-		      	 <Image src={data[0].images.main} fit='contain' alt='image'/>	
+		         <AspectRatio _hover={{boxShadow:'inset 0px -12vh 0 12px  rgba(153, 144, 148, 0.3)'}}
+			  margin='auto'  maxW={{sm:'60%',md:'20%'}} maxH={{sm:'70%',md:'30%'}} 
+			  ratio={{sm:0.55,md:0.55}}>
+		      	 <Image 
+			  src={data[0].images.main} fit='contain' alt='image'/>	
 		   	 </AspectRatio>
 		      </CardBody>
 		      <CardFooter ml={{sm:'3%'}}>
-		         <Hover data={data}/>
+			 <Flex minW='80vw' alignItems='center' flexDirection='row' justifyContent='space-between'>
+		            <Hover data={data}/>
+			    <ButtonGroup opacity='0.6' size='sm' isAttached>
+			       <Button bg='none' leftIcon={<Icon as={AiFillHeart}/>}>{90}</Button>
+			       <Button bg='none' leftIcon={<Icon as={AiOutlineEye}/>}>{"76.4k"}</Button>
+			    </ButtonGroup>
+			</Flex>
 		      </CardFooter>
 		   </Card>
 		</Box>)

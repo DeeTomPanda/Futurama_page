@@ -26,7 +26,7 @@ const Hover=({data})=>{
 	return(
 		 <Popover trigger='hover'>
 		    <PopoverTrigger>
-		               <Button _hover={{background:'none',borderColor:'transparent'}}>
+		               <Button bg='none' _hover={{borderColor:'transparent'}}>
 			         <Flex alignItems='center'>
 			            {<Avatar size='sm' objectFit='cover' src={data[0].images.main} />}		
 			            {data[0].name.first}
