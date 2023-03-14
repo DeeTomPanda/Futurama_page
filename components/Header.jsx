@@ -25,7 +25,7 @@ const ItemInput=()=>(
 	   <InputLeftElement
       	      pointerEvents='none'
               children={<SearchIcon/>}/>
-	   <Input size='md' placeholder='search'/>
+	   <Input size='md' placeholder='Search'/>
 	</InputGroup>)
 
 const Header=()=>{
@@ -38,7 +38,7 @@ const Header=()=>{
 		         <MenuButton opacity={'0.6'} >
 			    {!isOpen?<HamburgerIcon/>:<CloseIcon/>}
 		         </MenuButton>
-		         <MenuList>
+		         <MenuList minW={'90vw'}>
 			    <MenuItem closeOnSelect={false}>
 			       {<ItemInput/>}
 			    </MenuItem>
