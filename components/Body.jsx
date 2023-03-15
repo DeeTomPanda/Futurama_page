@@ -38,7 +38,7 @@ import Hover from './Hover.jsx'
 import './../styles/App.scss'
 
 const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
-	console.log(data)
+	console.log(data," is data")
 	return(
 		isLoading?(<Box><Center width='100vw' height='100vh'>{"Loading"}</Center></Box>):
 		(
