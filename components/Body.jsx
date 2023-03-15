@@ -24,20 +24,24 @@ import {
 	CardBody,
 	CardFooter,
 	Avatar,
-	Icon
+	Icon,
+	Stack
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { 
 	AiFillHeart,
-	AiOutlineEye
+	AiOutlineEye,
+	AiFillFolderAdd
 } from "react-icons/ai";
 import axios from 'axios'
 import Hover from './Hover.jsx'
+import './../styles/App.scss'
 
 const Body=()=>{
 
 	const [data,setData]=useState()
 	const [isLoading,setIsLoading]=useState(true)
+	const [hover,setHover]=useState(false)
 	useEffect(()=>{
 		const getData=async()=>{
 			await axios.get("https://api.sampleapis.com/futurama/characters")
@@ -45,7 +49,7 @@ const Body=()=>{
 		setIsLoading(false)}
 		getData()}
 	,[])
-	console.log(data)
+	console.log(data,hover)
 	return(
 		isLoading?(<Box><Center width='100vw' height='100vh'>{"Loading"}</Center></Box>):
 		(
@@ -69,15 +73,35 @@ const Body=()=>{
 		   </Center>
 		   <Card>
 		      <CardBody minW={'80%'} ml='auto' mr='auto'>
-		         <AspectRatio _hover={{boxShadow:'inset 0px -12vh 0 12px  rgba(153, 144, 148, 0.3)'}}
+		         <AspectRatio onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)} 
+			  _hover={{boxShadow:'inset 0px -12vh 0 12px  rgba(153, 144, 148, 0.3)'}}
 			  margin='auto'  maxW={{sm:'60%',md:'20%'}} maxH={{sm:'70%',md:'30%'}} 
 			  ratio={{sm:0.55,md:0.55}}>
-		      	 <Image 
-			  src={data[0].images.main} fit='contain' alt='image'/>	
+			<>
+		      	    <Image 
+			     src={data[0].images.main} fit='contain' alt='image'/>
+			   {hover?(
+			    <Box as='div' flexDirection='column' justify='flex-start'>
+			       <div className={"dummyDiv"}>{"dummyDiv"}</div>
+			       <Flex ml='0' p='0' w='inherit' mb={{sm:'10%'}} align='center' justify='space-between'> 
+			          <Heading color='white' size='sm'>{data[0].name.first}</Heading>
+			          <ButtonGroup>
+			             <Button size='md' bg='ghostwhite'>
+			                <Icon as={AiFillFolderAdd}/>
+			             </Button>
+			             <Button size='md' bg='ghostwhite'>
+			                <Icon as={AiFillHeart}/>
+			             </Button>   
+			          </ButtonGroup>
+			       </Flex>
+			   </Box>)
+			   :null}
+			 </>
 		   	 </AspectRatio>
 		      </CardBody>
 		      <CardFooter ml={{sm:'3%'}}>
-			 <Flex minW='80vw' alignItems='center' flexDirection='row' justifyContent='space-between'>
+			 <Flex minW={{sm:'85vw',md:'90vw'}} alignItems='center' flexDirection='row' 
+				 justifyContent='space-between'>
 		            <Hover data={data}/>
 			    <ButtonGroup opacity='0.6' size='sm' isAttached>
 			       <Button bg='none' leftIcon={<Icon as={AiFillHeart}/>}>{90}</Button>
