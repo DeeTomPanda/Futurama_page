@@ -64,17 +64,17 @@ const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
 		      </Text>
 		   </Center>
 		   <Card minW='inherit'>
-		      <CardBody minW={'60%'} minH={'70%'} mx='auto'>
+		      <CardBody mx='auto'>
 		         <AspectRatio className='aspect' minW={{sm:'20vw',md:'20vw'}} minH='inherit' 
 			  align='center' justify='center'  
 			  onMouseEnter={()=>setHover(true)} 
 			  onMouseLeave={()=>setHover(false)} 
 			  _hover={{boxShadow:'inset 0px -12vh 0 12px  rgba(153, 144, 148, 0.3)'}}
 			  margin='auto' maxW={{sm:'60%',md:'30%'}} 
-			  maxH={{xs:'100%',sm:'70%',md:'30%'}} 
-			  ratio={{xs:0.2,sm:0.55,md:0.58}}>
+			  maxH={{sm:'70%',md:'30%'}} 
+			  ratio={{sm:0.55,md:0.58}}>
 			<>
-		      	    <Image className='avatarImg' minW={{sm:'90vw'}} minH={{sm:'90vh'}} 
+		      	    <Image className='avatarImg' 
 			     src={data.images.main}  alt='image'/>    
 			   {hover?(
 			    <Box as='div' flexDirection='column' justify='flex-start'>
