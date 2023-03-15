@@ -22,3 +22,30 @@ html body{
 	background:transparent;
 	visibility:hidden;
 }
+
+@media screen and (max-width: 480px) {
+.avatarImg	
+   {
+    width:100vw;
+    height:120vh;
+    aspect-ratio:2/2.5;
+  }
+
+.aspect{
+	height:80vh;
+	width:90vw;
+	aspect-ratio:1/5;
+}
+.center{
+	margin-top:5vh;
+}
+.text{
+	margin-top:5vh;
+}
+.flexBox{
+	width:90vw;
+}
+.buttons{
+	margin-left:auto;
+}
+}

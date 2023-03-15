@@ -50,11 +50,11 @@ const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
 		         </MenuButton>
 		      </Menu>
 		   </Flex>
-		   <Center mb={{sm:'5%',md:'1%'}} flexDirection={'column'}>
+		   <Center className="center" mb={{sm:'5%',md:'1%'}} flexDirection={'column'}>
 		      <Heading pt={{sm:'7%',md:'3%'}} pb={{sm:'5%'}}>
 		         {"LOREM"}
 		      </Heading>
-		      <Text textAlign={'center'} pr={{sm:'5%',md:'1%'}} pl={{sm:'5%',md:'1%'}}>
+		      <Text className='text' textAlign={'center'} pr={{sm:'5%',md:'1%'}} pl={{sm:'5%',md:'1%'}}>
 		         {`Lorem ipsum Design a mobile first respofollowing:
 			    Display 4 Futurama profiles as shown in the
 			    e Figure1 The aspect-ratio feature is specified as a <ratio> value representing the width-
@@ -65,16 +65,17 @@ const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
 		   </Center>
 		   <Card minW='inherit'>
 		      <CardBody minW={'60%'} minH={'70%'} mx='auto'>
-		         <AspectRatio minW='20vw' minH='inherit' align='center' justify='center'  
+		         <AspectRatio className='aspect' minW={{sm:'20vw',md:'20vw'}} minH='inherit' 
+			  align='center' justify='center'  
 			  onMouseEnter={()=>setHover(true)} 
 			  onMouseLeave={()=>setHover(false)} 
 			  _hover={{boxShadow:'inset 0px -12vh 0 12px  rgba(153, 144, 148, 0.3)'}}
 			  margin='auto' maxW={{sm:'60%',md:'30%'}} 
 			  maxH={{xs:'100%',sm:'70%',md:'30%'}} 
-			  ratio={{sm:0.55,md:0.58}}>
+			  ratio={{xs:0.2,sm:0.55,md:0.58}}>
 			<>
-		      	    <Image 
-			     src={data.images.main} fit='contain' alt='image'/>    
+		      	    <Image className='avatarImg' minW={{sm:'90vw'}} minH={{sm:'90vh'}} 
+			     src={data.images.main}  alt='image'/>    
 			   {hover?(
 			    <Box as='div' flexDirection='column' justify='flex-start'>
 			       <div className={"dummyDiv"}>{"dummyDiv"}</div>
@@ -95,10 +96,11 @@ const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
 		   	 </AspectRatio>
 		      </CardBody>
 		      <CardFooter ml={{sm:'3%'}}>
-			 <Flex minW={{sm:'85vw',md:'90vw'}} alignItems='center' flexDirection='row' 
+			 <Flex className='flexBox' minW={{sm:'85vw',md:'90vw'}} alignItems='center' 
+			  flexDirection='row' 
 				 justifyContent='space-between'>
 		            <Hover data={data} Data={Data}/>
-			    <ButtonGroup opacity='0.6' size='sm' isAttached>
+			    <ButtonGroup className='buttons' opacity='0.6' size='sm' isAttached>
 			       <Button bg='none' leftIcon={<Icon as={AiFillHeart}/>}>{90}</Button>
 			       <Button bg='none' leftIcon={<Icon as={AiOutlineEye}/>}>{"76.4k"}</Button>
 			    </ButtonGroup>
