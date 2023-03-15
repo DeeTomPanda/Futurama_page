@@ -37,19 +37,7 @@ import axios from 'axios'
 import Hover from './Hover.jsx'
 import './../styles/App.scss'
 
-const Body=()=>{
-
-	const [data,setData]=useState()
-	const [isLoading,setIsLoading]=useState(true)
-	const [hover,setHover]=useState(false)
-	useEffect(()=>{
-		const getData=async()=>{
-			await axios.get("https://api.sampleapis.com/futurama/characters")
-			.then((res)=>setData(res.data),(err)=>console.log(err))
-		setIsLoading(false)}
-		getData()}
-	,[])
-	console.log(data,hover)
+const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
 	return(
 		isLoading?(<Box><Center width='100vw' height='100vh'>{"Loading"}</Center></Box>):
 		(
@@ -75,16 +63,17 @@ const Body=()=>{
 		      <CardBody minW={'80%'} ml='auto' mr='auto'>
 		         <AspectRatio onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)} 
 			  _hover={{boxShadow:'inset 0px -12vh 0 12px  rgba(153, 144, 148, 0.3)'}}
-			  margin='auto'  maxW={{sm:'60%',md:'20%'}} maxH={{sm:'70%',md:'30%'}} 
+			  margin='auto' maxW={{sm:'60%',md:'20%'}} 
+			  maxH={{xs:'100%',sm:'70%',md:'30%'}} 
 			  ratio={{sm:0.55,md:0.55}}>
 			<>
 		      	    <Image 
-			     src={data[0].images.main} fit='contain' alt='image'/>
+			     src={data.images.main} fit='contain' alt='image'/>    
 			   {hover?(
 			    <Box as='div' flexDirection='column' justify='flex-start'>
 			       <div className={"dummyDiv"}>{"dummyDiv"}</div>
 			       <Flex ml='0' p='0' w='inherit' mb={{sm:'10%'}} align='center' justify='space-between'> 
-			          <Heading color='white' size='sm'>{data[0].name.first}</Heading>
+			          <Heading color='white' size='sm'>{data.name.first}</Heading> 
 			          <ButtonGroup>
 			             <Button size='md' bg='ghostwhite'>
 			                <Icon as={AiFillFolderAdd}/>
@@ -102,7 +91,7 @@ const Body=()=>{
 		      <CardFooter ml={{sm:'3%'}}>
 			 <Flex minW={{sm:'85vw',md:'90vw'}} alignItems='center' flexDirection='row' 
 				 justifyContent='space-between'>
-		            <Hover data={data}/>
+		            <Hover data={data} Data={Data}/>
 			    <ButtonGroup opacity='0.6' size='sm' isAttached>
 			       <Button bg='none' leftIcon={<Icon as={AiFillHeart}/>}>{90}</Button>
 			       <Button bg='none' leftIcon={<Icon as={AiOutlineEye}/>}>{"76.4k"}</Button>
@@ -111,6 +100,7 @@ const Body=()=>{
 		      </CardFooter>
 		   </Card>
 		</Box>)
-	)}
+	)
+}
 
 export default Body
