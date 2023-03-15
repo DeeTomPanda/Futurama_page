@@ -57,7 +57,10 @@ const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
 		      <Text textAlign={'center'} pr={{sm:'5%',md:'1%'}} pl={{sm:'5%',md:'1%'}}>
 		         {`Lorem ipsum Design a mobile first respofollowing:
 			    Display 4 Futurama profiles as shown in the
-			    e Figure1 jfafs fhkhfkhf fuff`}
+			    e Figure1 The aspect-ratio feature is specified as a <ratio> value representing the width-
+			    to-height aspect ratio of the viewport. It is a range feature, meaning you can also use th
+			    e prefixed min-aspect-ratio and max-aspect-ratio variants to query minimum and
+			    maximum values, respectively.`}
 		      </Text>
 		   </Center>
 		   <Card minW='inherit'>
