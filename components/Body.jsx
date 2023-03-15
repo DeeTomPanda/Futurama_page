@@ -38,6 +38,7 @@ import Hover from './Hover.jsx'
 import './../styles/App.scss'
 
 const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
+	console.log(data)
 	return(
 		isLoading?(<Box><Center width='100vw' height='100vh'>{"Loading"}</Center></Box>):
 		(
@@ -59,13 +60,15 @@ const Body=({ data,setIsLoading,isLoading,hover,setHover,Data })=>{
 			    e Figure1 jfafs fhkhfkhf fuff`}
 		      </Text>
 		   </Center>
-		   <Card>
-		      <CardBody minW={'80%'} ml='auto' mr='auto'>
-		         <AspectRatio onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)} 
+		   <Card minW='inherit'>
+		      <CardBody minW={'60%'} minH={'70%'} mx='auto'>
+		         <AspectRatio minW='20vw' minH='inherit' align='center' justify='center'  
+			  onMouseEnter={()=>setHover(true)} 
+			  onMouseLeave={()=>setHover(false)} 
 			  _hover={{boxShadow:'inset 0px -12vh 0 12px  rgba(153, 144, 148, 0.3)'}}
-			  margin='auto' maxW={{sm:'60%',md:'20%'}} 
+			  margin='auto' maxW={{sm:'60%',md:'30%'}} 
 			  maxH={{xs:'100%',sm:'70%',md:'30%'}} 
-			  ratio={{sm:0.55,md:0.55}}>
+			  ratio={{sm:0.55,md:0.58}}>
 			<>
 		      	    <Image 
 			     src={data.images.main} fit='contain' alt='image'/>    
